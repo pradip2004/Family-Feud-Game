@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000"); // Backend Socket.IO server
+const socket = io("https://family-feud-game-sigma.vercel.app"); // Backend Socket.IO server
 
 export default socket;
