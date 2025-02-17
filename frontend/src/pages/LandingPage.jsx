@@ -20,6 +20,12 @@ function LandingPage() {
         >
           Live
         </button>
+        <button 
+          className='px-5 py-3 bg-amber-800 text-amber-100 font-bold rounded-full shadow-xl border-2 border-black absolute top-[80%] left-1/2 -translate-x-1/2'
+          onClick={() => navigate('/admin')}
+        >
+          Admin
+        </button>
       </div>
     </div>
   );

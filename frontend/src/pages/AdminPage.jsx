@@ -27,7 +27,7 @@ function AdminPage() {
   // Fetch questions from backend
   useEffect(() => {
     if (isAuthenticated) {
-      axios.get("https://family-feud-game-sigma.vercel.app/api/questions", {
+      axios.get("https://family-feud-game.onrender.com/api/questions", {
         headers: { Authorization: localStorage.getItem("token") },
       })
         .then((res) => setQuestions(res.data))
