@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import socket from "../utils/socket";
 import rightSound from "../assets/rightSound.mp3";
+import wrongSound from "../assets/wrong.mp3"
 
 function LivePage() {
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -28,7 +29,7 @@ function LivePage() {
     });
 
     socket.on("trigger_sound", () => {
-      playSound();
+      wrongMusic();
     });
 
     return () => {
@@ -37,6 +38,11 @@ function LivePage() {
       socket.off("trigger_sound");
     };
   }, []);
+
+  const wrongMusic = ()=>{
+    const audio1 = new Audio(wrongSound);
+    audio1.play();
+  }
 
   const playSound = () => {
     const audio = new Audio(rightSound);
@@ -67,9 +73,9 @@ function LivePage() {
 
   return (
     <div className="w-full h-screen bg-amber-100 flex items-center justify-center relative overflow-hidden">
-      
-      <div className="bg-[#E6F9AF] absolute top-20 text-xl font-bold px-5 py-3 border-4 border-black rounded-full">Question</div>
-      <div className="w-[80%] h-[70%] bg-white border-black border-4 rounded-[3rem] flex flex-col items-center justify-center p-8">
+      <img src="/Logo.png" alt="" className="w-96 absolute top-[-10%] z-10" />
+      <div className="bg-[#E6F9AF] absolute top-44 text-xl font-bold px-5 py-3 border-4 border-black rounded-full z-20">Question</div>
+      <div className="w-[80%] h-[60%] bg-white border-black border-4 rounded-[3rem] flex flex-col items-center justify-center p-8 mt-32">
         {currentQuestion ? (
           <>
             <h1 className="text-4xl font-bold text-center mb-10 px-4">{currentQuestion.question}</h1>
@@ -93,10 +99,12 @@ function LivePage() {
 
       {/* Animated Image */}
       {isVisible && (
-        <img src="/right.png" alt="" className="absolute w-72 right-image right-0" />
+        <img src="/right.png" alt="" className="absolute w-72 right-image right-0 top-14" />
       )}
 
       <img src="/Ishan.png" alt="" className="absolute w-72 bottom-0"/>
+      <img src="/grpA.png" alt="" className="absolute w-96 bottom-0 left-0" />
+      <img src="/grpB.png" alt="" className="absolute w-96 bottom-0 right-0" />
     </div>
   );
 }
